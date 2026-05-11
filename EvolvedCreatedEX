@@ -34,3 +34,4 @@ hist(trilob_fossil$midpoint,
      #reversing axis to represent past -> present
      xlim = c(rev(range(trilob_fossil$midpoint))) 
      )
+```
