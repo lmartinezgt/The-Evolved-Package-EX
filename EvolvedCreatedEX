@@ -1,0 +1,36 @@
+```{r, eval = FALSE}
+#| echo: true
+library(evolved)
+library(ggplot2)
+library(tidyverse)
+
+trilob_fossil |>
+  glimpse()
+
+# calculates fossil diversity through time 
+div1 <- calcFossilDivTT(trilob_fossil, method = "stdmethod")
+div2 <- calcFossilDivTT(ammonoidea_fossil, method = "stdmethod", bin.reso = 10)
+
+# Comparing different bins sizes in the standard method
+plot(x = div1$age, y = div1$div, type = "l", 
+     xlab = "Time (Mya)", ylab = "Richness", 
+     xlim = rev(range(div1$age)), col = "red") 
+lines(x = div2$age, y = div2$div, col = "blue")
+
+sum(trilob_fossil$species == "Mexicella mexicana")
+
+Tri_pick <- trilob_fossil |> 
+  filter(trilob_fossil$species == "Mexicella mexicana")
+
+# calculates and plots the early and late boundaries associated with each taxa 
+plotRawFossilOccs(data = trilob_fossil, tax.lvl = "species", sort = TRUE,
+  use.midpoint = TRUE, return.ranges = FALSE, knitr = FALSE)
+
+
+hist(trilob_fossil$midpoint,
+     breaks = 100, #increasing breaks to see data in a better precision
+     xlab="Absolute time (Mya)", main = "Fossil Occurrence midpoints",
+     
+     #reversing axis to represent past -> present
+     xlim = c(rev(range(trilob_fossil$midpoint))) 
+     )
