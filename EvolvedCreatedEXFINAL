@@ -1,0 +1,9 @@
+```{r}
+#| echo: true
+library(paleobioDB)
+
+# you can change the size of the cells using the  argument "res"
+pbdb_map_occur(trilob_fossil, res = 2, cex = 0.3)
+
+pbdb_map_occur(Tri_pick, res = 2, cex = 0.7)
+```
