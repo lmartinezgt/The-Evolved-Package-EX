@@ -1,0 +1,12 @@
+```{r}
+#| echo: true
+# Libraries used
+library(evolved)
+library(ggplot2)
+library(tidyverse)
+
+# EX 1
+timeseries_fossil |> 
+  group_by(stem_age) |> 
+  ggplot(aes(x = richness, fill = source)) + geom_histogram()
+```
