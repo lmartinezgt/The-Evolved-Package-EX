@@ -1,0 +1,7 @@
+```{r}
+#| echo: true
+library(evolved)
+
+# EX 2
+NatSelSim(w11 = 1, w12 = 1, w22 = 0.2, p0 = 0.5,n.gen = 20, 
+          plot.type = "static", print.data = FALSE, knitr = TRUE)
